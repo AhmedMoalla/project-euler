@@ -1,9 +1,53 @@
 package com.amoalla.euler.utils;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import static java.lang.Math.sqrt;
 
 public class Algorithms {
     public static class Primes {
+        public record PrimeFactor(int prime, int exponent) {}
+
+        public static List<PrimeFactor> factor(int n) {
+            List<PrimeFactor> primeFactors = new ArrayList<>();
+            for (int prime : primes()) {
+                if (n % prime == 0) {
+                    int exponent = 0;
+                    while (n % prime == 0) {
+                        n /= prime;
+                        exponent++;
+                    }
+                    primeFactors.add(new PrimeFactor(prime, exponent));
+                }
+
+                if (n == 1) break;
+            }
+            return primeFactors;
+        }
+
+        public static Iterable<Integer> primes() {
+            return () -> new Iterator<>() {
+                private int counter = 2;
+
+                @Override
+                public boolean hasNext() {
+                    return true;
+                }
+
+                @Override
+                public Integer next() {
+                    int number = counter;
+                    while (!isPrime(number)) {
+                        number++;
+                    }
+                    counter = number + 1;
+                    return number;
+                }
+            };
+        }
+
         public static boolean isPrime(int number) {
             if (number <= 1) return false;
             if (number == 2) return true;
