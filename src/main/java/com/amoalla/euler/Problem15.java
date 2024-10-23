@@ -1,4 +1,4 @@
-import static com.amoalla.euler.utils.Algorithms.Math.factorial;
+import static com.amoalla.euler.utils.Maths.factorial;
 
 /// # Lattice Paths
 /// Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down,

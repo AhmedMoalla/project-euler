@@ -1,4 +1,4 @@
-import com.amoalla.euler.utils.Algorithms;
+import com.amoalla.euler.utils.Primes;
 
 /// # Largest prime factor
 /// The prime factors of 13195 are 5, 7, 13 and 29.
@@ -10,7 +10,7 @@ void main() {
         if (n % primeDivisor == 0) {
             n = n / primeDivisor;
         } else {
-            while (!Algorithms.Primes.isPrime(++primeDivisor));
+            while (!Primes.isPrime(++primeDivisor));
         }
     }
     println(primeDivisor);

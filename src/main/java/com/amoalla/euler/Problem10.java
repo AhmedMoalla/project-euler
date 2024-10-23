@@ -1,4 +1,4 @@
-import com.amoalla.euler.utils.Algorithms;
+import com.amoalla.euler.utils.Primes;
 
 /// # Summation of primes
 /// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
@@ -6,7 +6,7 @@ import com.amoalla.euler.utils.Algorithms;
 void main() {
     long sum = 2;
     for (int i = 3; i < 2000000; i += 2) {
-        if (Algorithms.Primes.isPrime(i)) {
+        if (Primes.isPrime(i)) {
             sum += i;
         }
     }

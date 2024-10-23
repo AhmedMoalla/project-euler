@@ -1,4 +1,4 @@
-import com.amoalla.euler.utils.Algorithms;
+import com.amoalla.euler.utils.Maths;
 
 /// # Largest product in a grid
 /// In the 20 * 20 grid below, four numbers along a diagonal line have been marked in red.
@@ -61,7 +61,7 @@ void main() {
                 upRight = grid(x, y) * grid(x + 1, y - 1) * grid(x + 2, y - 2) * grid(x + 3, y - 3),
                 downLeft = grid(x, y) * grid(x - 1, y + 1) * grid(x - 2, y + 2) * grid(x - 3, y + 3),
                 downRight = grid(x, y) * grid(x + 1, y + 1) * grid(x + 2, y + 2) * grid(x + 3, y + 3);
-            int maxProduct = Algorithms.Math.max(up, down, left, right, upLeft, upRight, downLeft, downRight);
+            int maxProduct = Maths.max(up, down, left, right, upLeft, upRight, downLeft, downRight);
             if (maxProduct > max) {
                 max = maxProduct;
             }
