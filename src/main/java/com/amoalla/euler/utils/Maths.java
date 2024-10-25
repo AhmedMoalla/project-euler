@@ -1,8 +1,36 @@
 package com.amoalla.euler.utils;
 
 import java.math.BigInteger;
+import java.util.Iterator;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 public class Maths {
+    public static Iterable<BigInteger> fibonacciBig() {
+        return () -> new Iterator<>() {
+            private BigInteger beforePreviousValue = BigInteger.ONE;
+            private BigInteger previousValue = BigInteger.ONE;
+
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
+
+            @Override
+            public BigInteger next() {
+                BigInteger nextValue = previousValue.add(beforePreviousValue);
+                beforePreviousValue = previousValue;
+                previousValue = nextValue;
+                return nextValue;
+            }
+        };
+    }
+
+    public static LongStream fibonacciStream() {
+        return Stream.iterate(new long[]{0, 1}, i -> new long[]{i[1], i[0] + i[1]})
+                .map(i -> i[0]).mapToLong(Long::longValue);
+    }
+
     public static BigInteger factorial(int n) {
         BigInteger result = BigInteger.ONE;
         for (int i = 2; i <= n; i++) {
